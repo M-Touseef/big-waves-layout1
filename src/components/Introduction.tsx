@@ -120,6 +120,7 @@ export const Introduction = () => {
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=80"
                 alt="Executive Boardroom"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-navy/20 mix-blend-multiply pointer-events-none"></div>
             </div>
@@ -130,6 +131,7 @@ export const Introduction = () => {
                 src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&q=80"
                 alt="Global Maritime Port"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[2s] ease-out"
+                loading="lazy"
               />
             </div>
 

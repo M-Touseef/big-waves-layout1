@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -12,15 +13,30 @@ export const Hero = () => {
   return (
     <section className="relative w-full h-screen overflow-hidden bg-obsidian">
       {/* Video Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-obsidian">
+        {/* Fallback Static Poster Image */}
+        <img
+          src="/hero_poster.png"
+          alt="Big Wave Holding Background"
+          className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-1000 ${
+            isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+          loading="eager"
+        />
+
+        {/* Video Background */}
         <video
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-          poster=""
+          onPlay={() => setIsVideoLoaded(true)}
+          onLoadedData={() => setIsVideoLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-[1.5s] ${
+            isVideoLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          poster="/hero_poster.png"
         >
           <source src="/videos/big_waves_hero.mp4" type="video/mp4" />
         </video>

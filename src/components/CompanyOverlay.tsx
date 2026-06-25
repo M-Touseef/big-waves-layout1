@@ -46,6 +46,7 @@ export const CompanyOverlay = ({ company, onClose }: CompanyOverlayProps) => {
               src={company.image}
               alt={company.name}
               className="absolute inset-0 w-full h-full object-cover rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-navy/50"></div>
 
