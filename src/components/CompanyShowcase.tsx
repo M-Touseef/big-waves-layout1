@@ -1,5 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
-import { CompanyOverlay } from './CompanyOverlay';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
+
+const CompanyOverlay = lazy(() =>
+  import('./CompanyOverlay').then((m) => ({ default: m.CompanyOverlay }))
+);
 
 export interface Company {
   id: string;
@@ -259,10 +262,12 @@ export const CompanyShowcase = () => {
       </section>
 
       {overlayCompany && (
-        <CompanyOverlay
-          company={overlayCompany}
-          onClose={() => setOverlayCompany(null)}
-        />
+        <Suspense fallback={null}>
+          <CompanyOverlay
+            company={overlayCompany}
+            onClose={() => setOverlayCompany(null)}
+          />
+        </Suspense>
       )}
     </>
   );
