@@ -93,23 +93,7 @@ export const ContactFooter = () => {
             </span>
           </div>
 
-          {/* Center/Right: Navigation Ribbon */}
-          <div className="flex flex-wrap justify-center lg:justify-end gap-x-8 gap-y-4 w-full lg:w-auto">
-            {[
-              { label: 'Ecosystem', href: '#introduction' },
-              { label: 'Philosophy', href: '#philosophy' },
-              { label: 'Privacy Policy', href: '#' },
-              { label: 'Terms of Service', href: '#' },
-            ].map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="font-body text-[10px] tracking-[0.15em] uppercase text-text-muted/40 hover:text-gold transition-colors duration-300"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+
 
         </div>
       </div>
