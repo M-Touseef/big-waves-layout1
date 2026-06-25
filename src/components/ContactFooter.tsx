@@ -17,7 +17,7 @@ export const ContactFooter = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative bg-obsidian min-h-screen flex flex-col justify-between overflow-hidden"
+      className="relative bg-obsidian pt-24 pb-12 md:pt-36 md:pb-16 flex flex-col justify-between overflow-hidden"
     >
       {/* Oversized Background Typography */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none">
@@ -27,7 +27,7 @@ export const ContactFooter = () => {
       </div>
 
       {/* Main Content Area (Centered) */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 text-center mt-20">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center mb-16 md:mb-24">
         <div
           style={{
             opacity: isVisible ? 1 : 0,
