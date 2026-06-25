@@ -8,11 +8,11 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    viteCompression({
+    (viteCompression as any)({
       algorithm: 'brotliCompress',
       ext: '.br',
     }),
-    viteCompression({
+    (viteCompression as any)({
       algorithm: 'gzip',
       ext: '.gz',
     }),
