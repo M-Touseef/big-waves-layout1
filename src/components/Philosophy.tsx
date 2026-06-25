@@ -23,7 +23,7 @@ export const Philosophy = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -35,8 +35,12 @@ export const Philosophy = () => {
       ref={sectionRef}
       className="relative bg-obsidian py-28 md:py-36 overflow-hidden"
     >
-      {/* Subtle background */}
+      {/* Dynamic Background Elements */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+      
+      {/* Floating Golden Orbs */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gold/5 rounded-full blur-[100px] pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] bg-gold/3 rounded-full blur-[130px] pointer-events-none animate-pulse" style={{ animationDelay: '3s' }}></div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 lg:px-20 text-center">
         {/* Eyebrow */}
@@ -56,59 +60,78 @@ export const Philosophy = () => {
         </div>
 
         {/* Main Statement */}
-        <h2
-          className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[56px] text-text-light leading-[1.15] max-w-3xl mx-auto"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transform: isVisible ? 'translateY(0)' : 'translateY(25px)',
-            transition: 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s',
-          }}
-        >
-          Discipline builds empires<span className="text-gold">.</span>
-          <br />
-          Vision sustains them<span className="text-gold">.</span>
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-[56px] text-text-light leading-[1.15] max-w-3xl mx-auto flex flex-col gap-2">
+          <span
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
+            }}
+          >
+            Discipline builds empires<span className="text-gold">.</span>
+          </span>
+          <span
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+              transition: 'all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s',
+            }}
+          >
+            Vision sustains them<span className="text-gold">.</span>
+          </span>
         </h2>
 
         {/* Gold divider */}
         <div
-          className="w-12 h-px bg-gold/40 mx-auto mt-12 mb-16"
+          className="w-16 h-px bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mt-12 mb-16"
           style={{
             transform: isVisible ? 'scaleX(1)' : 'scaleX(0)',
-            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s',
+            transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s',
           }}
         ></div>
 
         {/* Principles */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-px"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transition: 'opacity 1s ease 0.7s',
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto mt-8">
           {principles.map((principle, index) => (
             <div
               key={principle.title}
-              className="group relative px-8 py-10 cursor-pointer border border-white/[0.03] rounded-xl hover:border-gold/30 hover:bg-gold/[0.02] hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(197,160,89,0.05)] transition-all duration-500 ease-out"
+              className="group relative px-8 py-10 cursor-pointer border border-white/[0.04] bg-navy/20 backdrop-blur-md rounded-2xl hover:border-gold/30 hover:bg-navy/40 hover:-translate-y-3 hover:shadow-[0_20px_50px_rgba(197,160,89,0.06)] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                transitionDelay: `${index * 150 + 500}ms`
+              }}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
             >
-              {/* Number */}
-              <span className="font-body text-[11px] tracking-[0.15em] text-gold/40 mb-4 block transition-transform duration-500 group-hover:scale-110 origin-left">
+              {/* Premium Glow Backing */}
+              <div
+                className="absolute -inset-2 bg-gradient-to-b from-gold/8 to-transparent blur-2xl rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10 pointer-events-none"
+                style={{
+                  transform: activeIndex === index ? 'scale(1.05)' : 'scale(0.95)',
+                }}
+              />
+
+              {/* Glowing Top Line Accent */}
+              <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-gold to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-center rounded-t-2xl"></div>
+
+              {/* Number Circle Badge */}
+              <div className="w-9 h-9 mx-auto rounded-full border border-gold/20 flex items-center justify-center font-body text-[10px] text-gold/85 tracking-widest mb-6 transition-all duration-500 group-hover:border-gold group-hover:bg-gold/10 group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(197,160,89,0.2)]">
                 {String(index + 1).padStart(2, '0')}
-              </span>
+              </div>
 
               {/* Title */}
-              <h3 className="font-display text-xl md:text-2xl text-text-light mb-4 transition-colors duration-300 group-hover:text-gold">
+              <h3 className="font-display text-2xl text-text-light mb-4 transition-all duration-300 group-hover:text-gold group-hover:translate-x-0.5">
                 {principle.title}
               </h3>
 
-              {/* Gold line */}
+              {/* Gold line separator */}
               <div
-                className="w-6 h-px bg-gold mx-auto mb-5 origin-left transition-all duration-500"
+                className="w-8 h-px bg-gold/30 mx-auto mb-5 origin-left transition-all duration-500"
                 style={{
                   transform: activeIndex === index ? 'scaleX(2)' : 'scaleX(1)',
-                  opacity: activeIndex === index ? 1 : 0.3,
+                  backgroundColor: activeIndex === index ? 'var(--color-gold)' : 'rgba(197, 160, 89, 0.3)',
                 }}
               ></div>
 
@@ -117,7 +140,7 @@ export const Philosophy = () => {
                 className="font-body text-[13px] md:text-[14px] leading-[1.7] text-text-muted/60 transition-all duration-500"
                 style={{
                   opacity: activeIndex === index ? 1 : 0.6,
-                  color: activeIndex === index ? '#9BA1AA' : undefined,
+                  color: activeIndex === index ? '#F7F5F0' : undefined,
                 }}
               >
                 {principle.description}
