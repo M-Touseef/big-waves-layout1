@@ -17,7 +17,7 @@ export const ContactFooter = () => {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative bg-obsidian pt-24 pb-12 md:pt-36 md:pb-16 flex flex-col justify-between overflow-hidden"
+      className="relative bg-obsidian pt-16 pb-8 md:pt-24 md:pb-10 flex flex-col justify-between overflow-hidden"
     >
       {/* Oversized Background Typography */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none">
@@ -27,7 +27,7 @@ export const ContactFooter = () => {
       </div>
 
       {/* Main Content Area (Centered) */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center mb-16 md:mb-24">
+      <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center mb-8 md:mb-12">
         <div
           style={{
             opacity: isVisible ? 1 : 0,
@@ -35,7 +35,7 @@ export const ContactFooter = () => {
             transition: 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s',
           }}
         >
-          <span className="font-body text-[10px] tracking-[0.4em] uppercase text-gold/60 block mb-8">
+          <span className="font-body text-[10px] tracking-[0.4em] uppercase text-gold/60 block mb-4">
             Connect
           </span>
           <h2 className="font-display text-5xl md:text-7xl lg:text-[100px] text-text-light leading-[0.95] tracking-tight">
@@ -45,7 +45,7 @@ export const ContactFooter = () => {
 
         {/* Minimalist Contact Links */}
         <div
-          className="mt-16 md:mt-24 flex flex-col sm:flex-row items-center gap-10 md:gap-20"
+          className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center gap-8 md:gap-16"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -80,7 +80,7 @@ export const ContactFooter = () => {
           transition: 'opacity 1.5s ease 0.8s',
         }}
       >
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-12 border-t border-white/[0.05] pt-12">
+        <div className="flex flex-col lg:flex-row justify-between items-end gap-8 border-t border-white/[0.05] pt-8">
           
           {/* Left: Location & Brand */}
           <div className="flex flex-col gap-4 text-center lg:text-left w-full lg:w-auto">
