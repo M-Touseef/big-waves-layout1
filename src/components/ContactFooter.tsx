@@ -92,9 +92,51 @@ export const ContactFooter = () => {
               Riyadh, Saudi Arabia
             </span>
           </div>
-
-
-
+          {/* Right: Social Media Icons */}
+          <div className="flex justify-center lg:justify-end gap-4 w-full lg:w-auto">
+            {[
+              { 
+                name: 'Twitter', 
+                href: 'https://twitter.com', 
+                icon: (
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                ) 
+              },
+              { 
+                name: 'Instagram', 
+                href: 'https://instagram.com', 
+                icon: (
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ) 
+              },
+              { 
+                name: 'TikTok', 
+                href: 'https://tiktok.com', 
+                icon: (
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.89-.6-4.09-1.5-.77-.58-1.42-1.36-1.89-2.22v8.83c0 1.39-.23 2.77-.87 3.96-.94 1.72-2.73 3-4.66 3.32-2.33.37-4.83-.34-6.52-2.03-1.84-1.85-2.5-4.67-1.7-7.14.65-2.02 2.37-3.66 4.46-4.14 1.12-.26 2.29-.22 3.4.09v4.13c-.94-.34-2-.36-2.9-.01-1.12.44-1.94 1.52-2.06 2.71-.16 1.48.79 2.97 2.23 3.33 1.19.3 2.51-.07 3.27-1.07.45-.6.67-1.34.66-2.1V.02h.12z" />
+                  </svg>
+                ) 
+              },
+            ].map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={social.name}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/10 hover:border-gold/50 text-text-muted/60 hover:text-gold bg-white/[0.02] hover:bg-gold/10 transition-all duration-300 hover:shadow-[0_0_12px_rgba(197,160,89,0.2)] hover:-translate-y-1"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
